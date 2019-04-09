@@ -176,7 +176,7 @@
 
   /**
    * Perform an ajax request to get comments for a node
-   * and insert the comments into the comments tree2.
+   * and insert the comments into the comments tree.
    */
   function getComments(id) {
     $.ajax({
@@ -211,7 +211,7 @@
   }
 
   /**
-   * Add a comment via ajax and insert the comment into the comment tree2.
+   * Add a comment via ajax and insert the comment into the comment tree.
    */
   function addComment(form) {
     var node_id = form.find('input[name="node"]').val();
@@ -270,7 +270,7 @@
 
   /**
    * Recursively append comments to the main comment list and children
-   * lists, creating the comment tree2.
+   * lists, creating the comment tree.
    */
   function appendComments(comments, ul) {
     $.each(comments, function() {
@@ -285,7 +285,7 @@
 
   /**
    * After adding a new comment, it must be inserted in the correct
-   * location in the comment tree2.
+   * location in the comment tree.
    */
   function insertComment(comment) {
     var div = createCommentDiv(comment);
@@ -525,7 +525,7 @@
   }
 
   /**
-   * Recursively sort a tree2 of comments using the comp comparator.
+   * Recursively sort a tree of comments using the comp comparator.
    */
   function sortComments(comments) {
     comments.sort(comp);

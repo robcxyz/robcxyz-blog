@@ -1411,7 +1411,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 			bp.unshift( cur );
 		}
 
-		// Walk down the tree2 looking for a discrepancy
+		// Walk down the tree looking for a discrepancy
 		while ( ap[i] === bp[i] ) {
 			i++;
 		}
@@ -4945,7 +4945,7 @@ jQuery.Event = function( src, props ) {
 		this.type = src.type;
 
 		// Events bubbling up the document may have been marked as prevented
-		// by a handler lower down the tree2; reflect the correct value.
+		// by a handler lower down the tree; reflect the correct value.
 		this.isDefaultPrevented = src.defaultPrevented ||
 				src.defaultPrevented === undefined &&
 				// Support: IE < 9, Android < 4.0
@@ -5079,7 +5079,7 @@ if ( !support.submitBubbles ) {
 		},
 
 		postDispatch: function( event ) {
-			// If form was submitted by the user, bubble the event up the tree2
+			// If form was submitted by the user, bubble the event up the tree
 			if ( event._submit_bubble ) {
 				delete event._submit_bubble;
 				if ( this.parentNode && !event.isTrigger ) {
