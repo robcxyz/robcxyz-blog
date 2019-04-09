@@ -4,4 +4,4 @@
 *.tfstate.*
 aws/terraform/terraform.tfvars
 *account.tfvars
-_old
+_old/
