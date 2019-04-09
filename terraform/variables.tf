@@ -1,7 +1,11 @@
-variable "www_domain_name" {
-  default = "www.runatlantis.io"
+variable "region" {
+  default = "us-east-1"
 }
 
 variable "root_domain_name" {
-  default = "runatlantis.io"
+  default = "robcannon.xyz"
+}
+
+variable "subdomain" {
+  default = "blog"
 }
