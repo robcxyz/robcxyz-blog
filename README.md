@@ -1,8 +1,14 @@
 # robcxyz-blog
-Blog made in Sphinx for robc.xyz
+Blog made in Sphinx for <....>
 
+```bash
+make html
+python3 -m http.server 8001
+```
 
-
+```bash
+tinker  --setup 
+```
 
 # Resources 
 
