@@ -1,7 +1,6 @@
 provider "aws" {
-  region = "${var.region}"
+  region = var.region
   profile = "robcxyz-blog"
-
 }
 
 data "aws_route53_zone" "root" {
@@ -13,19 +12,18 @@ resource "aws_route53_zone" "subdomain" {
 }
 
 resource "aws_route53_record" "subdomain_root_records" {
-  zone_id = "${data.aws_route53_zone.root.zone_id}"
-  name    = "${var.subdomain}.${var.root_domain_name}"
-  type    = "NS"
-  ttl     = "30"
+  zone_id = data.aws_route53_zone.root.zone_id
+  name = "${var.subdomain}.${var.root_domain_name}"
+  type = "NS"
+  ttl = "30"
 
   records = [
-    "${aws_route53_zone.subdomain.name_servers.0}",
-    "${aws_route53_zone.subdomain.name_servers.1}",
-    "${aws_route53_zone.subdomain.name_servers.2}",
-    "${aws_route53_zone.subdomain.name_servers.3}",
+    aws_route53_zone.subdomain.name_servers[0],
+    aws_route53_zone.subdomain.name_servers[1],
+    aws_route53_zone.subdomain.name_servers[2],
+    aws_route53_zone.subdomain.name_servers[3],
   ]
 }
-
 
 //                                            www Bucket
 
@@ -50,6 +48,7 @@ resource "aws_s3_bucket" "www" {
 }
 POLICY
 
+
   website {
     index_document = "index.html"
     error_document = "404.html"
@@ -59,10 +58,11 @@ POLICY
 //                                                    Cert
 
 resource "aws_acm_certificate" "certificate" {
-//  domain_name = ".${var.root_domain_name}"
+  //  domain_name = ".${var.root_domain_name}"
   domain_name = "${var.subdomain}.${var.root_domain_name}"
   validation_method = "DNS"
-  subject_alternative_names = ["*.${var.subdomain}.${var.root_domain_name}"]
+  subject_alternative_names = [
+    "*.${var.subdomain}.${var.root_domain_name}"]
 
   lifecycle {
     create_before_destroy = true
@@ -70,24 +70,23 @@ resource "aws_acm_certificate" "certificate" {
 }
 
 resource "aws_acm_certificate_validation" "default" {
-  certificate_arn = "${aws_acm_certificate.certificate.arn}"
+  certificate_arn = aws_acm_certificate.certificate.arn
   validation_record_fqdns = [
-    "${aws_route53_record.cert_validation.fqdn}",
+    aws_route53_record.cert_validation.fqdn,
   ]
 }
 
 resource "aws_route53_record" "cert_validation" {
-  name = "${aws_acm_certificate.certificate.domain_validation_options.0.resource_record_name}"
-  type = "${aws_acm_certificate.certificate.domain_validation_options.0.resource_record_type}"
-  zone_id = "${aws_route53_zone.subdomain.zone_id}"
+  name = aws_acm_certificate.certificate.domain_validation_options[0].resource_record_name
+  type = aws_acm_certificate.certificate.domain_validation_options[0].resource_record_type
+  zone_id = aws_route53_zone.subdomain.zone_id
   records = [
-    "${aws_acm_certificate.certificate.domain_validation_options.0.resource_record_value}"]
+    aws_acm_certificate.certificate.domain_validation_options[0].resource_record_value,
+  ]
   ttl = 60
 }
 
-
 //                                                          CloudFront
-
 
 resource "aws_cloudfront_distribution" "www_distribution" {
   origin {
@@ -98,10 +97,11 @@ resource "aws_cloudfront_distribution" "www_distribution" {
       origin_ssl_protocols = [
         "TLSv1",
         "TLSv1.1",
-        "TLSv1.2"]
+        "TLSv1.2",
+      ]
     }
 
-    domain_name = "${aws_s3_bucket.www.website_endpoint}"
+    domain_name = aws_s3_bucket.www.website_endpoint
     origin_id = "www.${var.subdomain}.${var.root_domain_name}"
   }
 
@@ -113,10 +113,13 @@ resource "aws_cloudfront_distribution" "www_distribution" {
     compress = true
     allowed_methods = [
       "GET",
-      "HEAD"]
+      "HEAD",
+    ]
     cached_methods = [
       "GET",
-      "HEAD"]
+      "HEAD",
+    ]
+
     // This needs to match the `origin_id` above.
     target_origin_id = "www.${var.subdomain}.${var.root_domain_name}"
     min_ttl = 0
@@ -132,7 +135,8 @@ resource "aws_cloudfront_distribution" "www_distribution" {
   }
 
   aliases = [
-    "www.${var.subdomain}.${var.root_domain_name}"]
+    "www.${var.subdomain}.${var.root_domain_name}",
+  ]
 
   restrictions {
     geo_restriction {
@@ -141,20 +145,19 @@ resource "aws_cloudfront_distribution" "www_distribution" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = "${aws_acm_certificate_validation.default.certificate_arn}"
+    acm_certificate_arn = aws_acm_certificate_validation.default.certificate_arn
     ssl_support_method = "sni-only"
   }
 }
 
-
 resource "aws_route53_record" "www" {
-  zone_id = "${aws_route53_zone.subdomain.zone_id}"
+  zone_id = aws_route53_zone.subdomain.zone_id
   name = "www.${var.subdomain}.${var.root_domain_name}"
   type = "A"
 
-  alias = {
-    name = "${aws_cloudfront_distribution.www_distribution.domain_name}"
-    zone_id = "${aws_cloudfront_distribution.www_distribution.hosted_zone_id}"
+  alias {
+    name = aws_cloudfront_distribution.www_distribution.domain_name
+    zone_id = aws_cloudfront_distribution.www_distribution.hosted_zone_id
     evaluate_target_health = false
   }
 }
@@ -179,6 +182,7 @@ resource "aws_s3_bucket" "root" {
 }
 POLICY
 
+
   website {
     redirect_all_requests_to = "https://${var.subdomain}.${var.root_domain_name}"
   }
@@ -193,9 +197,10 @@ resource "aws_cloudfront_distribution" "root_distribution" {
       origin_ssl_protocols = [
         "TLSv1",
         "TLSv1.1",
-        "TLSv1.2"]
+        "TLSv1.2",
+      ]
     }
-    domain_name = "${aws_s3_bucket.root.website_endpoint}"
+    domain_name = aws_s3_bucket.root.website_endpoint
     origin_id = "${var.subdomain}.${var.root_domain_name}"
   }
 
@@ -207,10 +212,12 @@ resource "aws_cloudfront_distribution" "root_distribution" {
     compress = true
     allowed_methods = [
       "GET",
-      "HEAD"]
+      "HEAD",
+    ]
     cached_methods = [
       "GET",
-      "HEAD"]
+      "HEAD",
+    ]
     target_origin_id = "${var.subdomain}.${var.root_domain_name}"
     min_ttl = 0
     default_ttl = 86400
@@ -225,7 +232,8 @@ resource "aws_cloudfront_distribution" "root_distribution" {
   }
 
   aliases = [
-    "${var.subdomain}.${var.root_domain_name}"]
+    "${var.subdomain}.${var.root_domain_name}",
+  ]
 
   restrictions {
     geo_restriction {
@@ -234,20 +242,22 @@ resource "aws_cloudfront_distribution" "root_distribution" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = "${aws_acm_certificate_validation.default.certificate_arn}"
+    acm_certificate_arn = aws_acm_certificate_validation.default.certificate_arn
     ssl_support_method = "sni-only"
   }
 }
 
 resource "aws_route53_record" "root" {
-  zone_id = "${aws_route53_zone.subdomain.zone_id}"
+  zone_id = aws_route53_zone.subdomain.zone_id
+
   // NOTE: name is blank here.
   name = ""
   type = "A"
 
-  alias = {
-    name = "${aws_cloudfront_distribution.root_distribution.domain_name}"
-    zone_id = "${aws_cloudfront_distribution.root_distribution.hosted_zone_id}"
+  alias {
+    name = aws_cloudfront_distribution.root_distribution.domain_name
+    zone_id = aws_cloudfront_distribution.root_distribution.hosted_zone_id
     evaluate_target_health = false
   }
 }
+

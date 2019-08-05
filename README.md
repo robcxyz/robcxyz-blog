@@ -1,5 +1,5 @@
 # robcxyz-blog
-Blog made in Sphinx for <....>
+Blog made in [Tinkerer](), a [Sphinx]() for <....>
 
 ```
 cd blog 
@@ -7,16 +7,9 @@ cd blog
 
 #### Using Tinkerer 
 ```bash
-tinker  --setup 
-```
-
-
-#### Using Sphinx 
-```bash
-make html
+tinker  --build 
 python3 -m http.server 8001
 ```
-
 
 # Resources 
 

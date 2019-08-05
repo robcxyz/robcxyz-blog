@@ -3,9 +3,10 @@ variable "region" {
 }
 
 variable "root_domain_name" {
-  default = "robcannon.xyz"
+  default = "robc.io"
 }
 
 variable "subdomain" {
   default = "blog"
 }
+
