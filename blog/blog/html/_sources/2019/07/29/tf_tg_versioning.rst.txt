@@ -14,18 +14,18 @@ Installation and use. [Docs](https://github.com/warrensbox/terraform-switcher/)
 
 .. code-block:: bash
 
-curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh | sudo bash
-sudo chown -R $USER /usr/local/bin
-tfswitch
+    curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh | sudo bash
+    sudo chown -R $USER /usr/local/bin
+    tfswitch
 
 
 If running into permissions issues then switch to user install and fix path
 
 .. code-block:: bash
 
-mkdir ~/bin
-export PATH=$PATH:~/bin
-tfswitch -b ~/bin/terraform
+    mkdir ~/bin
+    export PATH=$PATH:~/bin
+    tfswitch -b ~/bin/terraform
 
 Terragrunt Switcher - tgswitch
 ------------------------------
@@ -34,14 +34,9 @@ Installation and use. [Docs](https://github.com/warrensbox/tgswitch/)
 
 .. code-block:: bash
 
-curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh | sudo bash
-sudo chown -R $USER /usr/local/bin
-tfswitch
-
-
-
-
-
+    curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh | sudo bash
+    sudo chown -R $USER /usr/local/bin
+    tfswitch
 
 
 .. author:: default

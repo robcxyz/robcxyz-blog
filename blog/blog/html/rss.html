@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Rob Cannon's blog</title>
+        <link>localhost:8001/</link>
+        <description>DevOps </description>
+        <language>en-us</language>
+        <pubDate>Sun, 04 Aug 2019 00:00:00 -0700</pubDate>
+        
+        <item>
+            <link>localhost:8001/2019/08/04/this_might_be_the_last_straw_for_windows.html</link>
+            <guid>localhost:8001/2019/08/04/this_might_be_the_last_straw_for_windows.html</guid>
+            <title><![CDATA[This might be the last straw for windows]]></title>
+            <description><![CDATA[This might be the last straw for windows]]></description>
+             <pubDate>Sun, 04 Aug 2019 00:00:00 -0700</pubDate>
+        </item>
+    
+        <item>
+            <link>localhost:8001/2019/07/29/tf_tg_versioning.html</link>
+            <guid>localhost:8001/2019/07/29/tf_tg_versioning.html</guid>
+            <title><![CDATA[Terraform + Terragrunt Versioning]]></title>
+            <description><![CDATA[<h1>Terraform + Terragrunt Versioning</h1>
+<p>This is awesome.  I used to do this manually but now there is a nice CLI tool that downloads the version of
+Terraform and Terragrunt that you want and then replaces a symlink in /usr/local/bin or somewhere else in PATH.</p>
+<p>Awesome….</p>
+<div class="section" id="terraform-switcher-tfswitch">
+<h2>Terraform Switcher - tfswitch</h2>
+<p>Installation and use. [Docs](<a class="reference external" href="https://github.com/warrensbox/terraform-switcher/">https://github.com/warrensbox/terraform-switcher/</a>)</p>
+<div class="highlight-bash"><div class="highlight"><pre><span/>curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh <span class="p">|</span> sudo bash
+sudo chown -R <span class="nv">$USER</span> /usr/local/bin
+tfswitch
+</pre></div>
+</div>
+<p>If running into permissions issues then switch to user install and fix path</p>
+<div class="highlight-bash"><div class="highlight"><pre><span/>mkdir ~/bin
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:~/bin
+tfswitch -b ~/bin/terraform
+</pre></div>
+</div>
+</div>
+<div class="section" id="terragrunt-switcher-tgswitch">
+<h2>Terragrunt Switcher - tgswitch</h2>
+<p>Installation and use. [Docs](<a class="reference external" href="https://github.com/warrensbox/tgswitch/">https://github.com/warrensbox/tgswitch/</a>)</p>
+<div class="highlight-bash"><div class="highlight"><pre><span/>curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh <span class="p">|</span> sudo bash
+sudo chown -R <span class="nv">$USER</span> /usr/local/bin
+tfswitch
+</pre></div>
+</div>
+</div>
+]]></description>
+             <pubDate>Mon, 29 Jul 2019 00:00:00 -0700</pubDate>
+        </item>
+    
+        <item>
+            <link>localhost:8001/2019/07/22/modular_interfaces.html</link>
+            <guid>localhost:8001/2019/07/22/modular_interfaces.html</guid>
+            <title><![CDATA[Modular interfaces]]></title>
+            <description><![CDATA[<h1>Modular interfaces</h1>
+<p>So I’m trying to modularize a bunch of terraform code and I get stuck on the idea of coupling.  To couple or not to couple is always the greatest question.
+Right now I format my terraform based on a sort of hierarchy where I go something like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span/>├── infrastructure
+│   ├── dev
+│   │   ├── terragrunt.hcl
+│   │   ├── us-east-1
+│   │   │   └── ec2
+│   │   │       └── terragrunt.hcl
+│   │   │   └── some other service
+│   │   │       └── terragrunt.hcl
+</pre></div>
+</div>
+<p><strong>Note that both Resource Group and Service are optional.  Simple deployments would maintain one level</strong></p>
+<p>So this hierarchy is critical to everything as when we use tools like Terragrunt, we persist the state in a remote object store based on a key structure
+that is reflected from the naming of the folder hierarchy that we store the configuration files in and run from.  Thats a lot of information
+that honestly, you are best off reading <a class="reference external" href="https://blog.gruntwork.io/how-to-manage-terraform-state-28f5697e68fa#isolation-via-file-layout">this doc</a>
+if you really want to dive and understand the justification to all of this.  Instead so lets just show an example.</p>
+<p>Lets say we have a repo like this.</p>
+<div class="highlight-default"><div class="highlight"><pre><span/>├── infrastructure
+│   ├── dev
+│   │   ├── terragrunt.hcl
+│   │   ├── us-east-1
+│   │   │   └── ec2
+│   │   │       └── terragrunt.hcl
+│   │   │   └── some other service
+│   │   │       └── terragrunt.hcl
+</pre></div>
+</div>
+]]></description>
+             <pubDate>Mon, 22 Jul 2019 00:00:00 -0700</pubDate>
+        </item>
+    
+        <item>
+            <link>localhost:8001/2019/07/18/immutable_architecture.html</link>
+            <guid>localhost:8001/2019/07/18/immutable_architecture.html</guid>
+            <title><![CDATA[Why build all infrastructure with code…]]></title>
+            <description><![CDATA[Why build all infrastructure with code…]]></description>
+             <pubDate>Thu, 18 Jul 2019 00:00:00 -0700</pubDate>
+        </item>
+    
+        <item>
+            <link>localhost:8001/2019/07/15/first_post.html</link>
+            <guid>localhost:8001/2019/07/15/first_post.html</guid>
+            <title><![CDATA[Time to start writing…]]></title>
+            <description><![CDATA[<h1>Time to start writing…</h1>
+<p>Ok, it’s just got to start happening.  I’ve been thinking about doing this for a really long time and I think I have enough to say to finally put it out there on the interwebs worldwide.  I got a ton of notes on various dev ops topics that I want to make public and musings about random stuff and things that it’s about time.</p>
+<p>I want to open source this all mostly because the documentation I want to post will evolve and I want to take PRs to improve it potentially. I don’t know if anyone will take the time but it would be cool to see if the docs I have are in any way authoritative enough to warrant a PR… Anyways, lets give this a shot.</p>
+]]></description>
+             <pubDate>Mon, 15 Jul 2019 00:00:00 -0700</pubDate>
+        </item>
+    
+    </channel>
+</rss>
