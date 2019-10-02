@@ -1,9 +1,0 @@
-This might be the last straw for windows
-========================================
-
-
-
-.. author:: default
-.. categories:: none
-.. tags:: none
-.. comments::
