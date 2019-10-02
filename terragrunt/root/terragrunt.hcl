@@ -1,5 +1,5 @@
 terraform {
-  source = "github.com/robc-io/terraform-aws-cloudfront-s3-acm"
+  source = "github.com/robc-io/terraform-aws-cloudfront-s3-acm-root"
 
   extra_arguments "custom_vars" {
     commands = get_terraform_commands_that_need_vars()
@@ -16,7 +16,7 @@ remote_state {
   config = {
     encrypt = true
     region = "us-east-1"
-    key = "terraform.tfstate"
+    key = "root/terraform.tfstate"
     bucket = "terraform-states-${get_aws_account_id()}"
     dynamodb_table = "terraform-locks-${get_aws_account_id()}"
   }
