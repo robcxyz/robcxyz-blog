@@ -19,10 +19,10 @@ tagline = 'DevOps '
 description = 'Rambles'
 
 # Change this to your name
-author = 'Rob Cannon'
+# author = 'Rob Cannon'
 
 # Change this to your copyright string
-copyright = '2019, ' + author
+# copyright = '2019, ' + author
 
 # Change this to your blog root URL (required for RSS feed)
 website = 'localhost:8001'
@@ -32,7 +32,7 @@ website = 'localhost:8001'
 # More tweaks you can do
 # **************************************************************
 
-# Add your Disqus shortname to enable comments powered by Disqus
+# Add your Disqus shortname to enable comments powered by Di squs
 disqus_shortname = None
 
 # Change your favicon (new favicon goes in _static directory)

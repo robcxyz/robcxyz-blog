@@ -1,5 +1,5 @@
 # robcxyz-blog
-Blog made in [Tinkerer](), a [Sphinx]() for <....>
+Blog made in [Tinkerer](), a [Sphinx]() for 
 
 ```
 cd blog 

@@ -4,4 +4,10 @@
 *.tfstate.*
 aws/terraform/terraform.tfvars
 *account.tfvars
-_old/
+_old/*
+
+
+Pipfile.lock
+
+blog/blog/html/*
+blog/blog/doctrees/*
