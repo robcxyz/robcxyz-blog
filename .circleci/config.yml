@@ -33,7 +33,7 @@ jobs:
 #          command: touch blog/.nojekyll
       - aws-s3/sync:
           from: blog
-          to: 's3://blog.robc.io'
+          to: 's3://robc.xyz'
           overwrite: true
           aws-region: AWS_DEFAULT_REGION
       - run:

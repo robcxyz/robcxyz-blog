@@ -1,18 +1,8 @@
 .idea/
-**/.terraform/*
-*.tfstate
-*.tfstate.*
-aws/terraform/terraform.tfvars
-*account.tfvars
-_old/*
-
-
-Pipfile.lock
+.terragrunt-cache/
+env
 
 blog/blog/html
 blog/blog/doctrees
-
 blog/blog/html/
 
-.terragrunt-cache/
-.terraform/
