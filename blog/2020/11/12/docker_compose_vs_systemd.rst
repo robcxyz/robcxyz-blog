@@ -7,14 +7,14 @@ I am now off the SystemD train and fully bought into docker for as much as it ma
 
 For an example, this stack took me 3 hours to build with docker-compose,
 
-- `TF`_
-- `ANS`_
-- `DCOMP`_
+- `Terraform module <https://github.com/insight-infrastructure/terraform-aws-superset-docker>`_
+- `Ansible role <https://github.com/insight-infrastructure/ansible-role-superset-docker>`_
+- `docker-compose <https://github.com/insight-infrastructure/superset-docker-compose>`_
 
 Where as this stack took me several days with all the debugging...
 
-- `TF2`_
-- `ANS2`_
+- `Terraform module <https://github.com/insight-infrastructure/terraform-aws-superset>`_
+- `Ansible role <https://github.com/insight-infrastructure/ansible-role-superset>`_
 
 Time is money. I'm officially over SystemD. Give me a couple months and I might just throw away VMs for k8s all together.  In time.
 
@@ -22,10 +22,3 @@ Time is money. I'm officially over SystemD. Give me a couple months and I might 
 .. categories:: none
 .. tags:: none
 .. comments::
-
-.. _TF: https://github.com/insight-infrastructure/terraform-aws-superset-docker
-.. _ANS: https://github.com/insight-infrastructure/ansible-role-superset-docker
-.. _DCOMP: https://github.com/insight-infrastructure/superset-docker-compose
-
-.. _TF2: https://github.com/insight-infrastructure/terraform-aws-superset
-.. _ANS2: https://github.com/insight-infrastructure/ansible-role-superset
