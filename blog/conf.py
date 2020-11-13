@@ -19,7 +19,7 @@ tagline = 'DevOps '
 description = 'Rambles'
 
 # Change this to your name
-# author = 'Rob Cannon'
+author = 'Rob Cannon'
 
 # Change this to your copyright string
 # copyright = '2019, ' + author
