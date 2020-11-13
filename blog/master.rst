@@ -5,6 +5,7 @@ Sitemap
    :maxdepth: 1
 
    2020/11/12/docker_compose_vs_systemd
+   2020/11/10/nuki_to_tackle
    2020/09/07/back_to_blogging
    2019/08/04/this_might_be_the_last_straw_for_windows
    2019/07/29/tf_tg_versioning
