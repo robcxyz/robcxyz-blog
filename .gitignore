@@ -1,6 +1,7 @@
 .idea/
 .terragrunt-cache/
 env
+#*.pyc
 
 blog/blog/html
 blog/blog/doctrees
