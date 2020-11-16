@@ -28,9 +28,6 @@ jobs:
       - checkout
       - attach_workspace:
           at: blog/
-#      - run:
-#          name: Disable jekyll builds
-#          command: touch blog/.nojekyll
       - aws-s3/sync:
           from: blog
           to: 's3://robc.xyz'
