@@ -16,7 +16,9 @@ Where as this stack took me several days with all the debugging...
 - `Terraform module <https://github.com/insight-infrastructure/terraform-aws-superset>`_
 - `Ansible role <https://github.com/insight-infrastructure/ansible-role-superset>`_
 
-Time is money. I'm officially over SystemD. Give me a couple months and I might just throw away VMs for k8s all together.  In time.
+I think the real key is just getting systemd to play nice with docker-compose.  Have yet to figure out best way of doing that.
+
+Starting to really hate VMs...
 
 .. author:: default
 .. categories:: none
