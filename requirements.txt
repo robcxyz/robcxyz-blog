@@ -1,2 +1,2 @@
 tinkerer==1.7.1
-sphinx==1.6.1
+sphinx==1.8
