@@ -1,5 +1,5 @@
-why-i-moved-to-bangalore
-==================
+Why I Moved to Bangalore
+========================
 
 I've always thought of myself as one of, if not the hardest working people I know. Definitely not the most productive, but I try. I've sacrificed a lot over the years doing startups and I finally feel like I have taken the biggest plunge you can take in the startup game, moving to Bangalore India. On the spectrum of things you can do to execute on a startup, this is definitely the most hardcore move you can make. Being from the bay area, I knew I would be in for some culture shock and moving here has not disappointed.
 

@@ -5,17 +5,17 @@ Recently I heard something that resonated, that building idiomatic dev ops is st
 
 Anyways, idiomatic dev ops is still not a thing and there are a lot of smart people working on it but I think the biggest blocker at the moment is this idea.
 
-- Most dev ops applications are simply ways of getting config files into target applications
+* Most dev ops applications are simply ways of getting config files into target applications
     - See helm, helmfile, terragrunt (more on this one later), etc
-- Applications typically don't care about anything past what exactly they are being fed
-- This creates a situation where you have a lot of great tools but it is on the user to actually get it working well within their environment's specifications
+* Applications typically don't care about anything past what exactly they are being fed
+* This creates a situation where you have a lot of great tools but it is on the user to actually get it working well within their environment's specifications
     - For instance if you have multiple envs like most do, you typically need to engineer how these envs have shared attributes and individual ones
-- Brass tax - everything ends up in yaml or some file like it which is static and so workflows have to resolve to something like that
+* Brass tax - everything ends up in yaml or some file like it which is static and so workflows have to resolve to something like that
 
 For these issues, tackle-box is going to crush for a couple reasons:
 
-- It is free form as in the user has the perfect tooling to implement the way that they want to implement their custom dry solution. There is no one size fits all but given a little bit of tackle knowledge, building something that is dry is not hard
-- All the tools that people use (ie terraform, ansible, helm, helmfile etc) have a schema that you can simply code generate or even better create an abstract interface to implement
+* It is free form as in the user has the perfect tooling to implement the way that they want to implement their custom dry solution. There is no one size fits all but given a little bit of tackle knowledge, building something that is dry is not hard
+* All the tools that people use (ie terraform, ansible, helm, helmfile etc) have a schema that you can simply code generate or even better create an abstract interface to implement
     - Code generation is pretty straightforward in that you make a tackle that generates the files needed and then hook into something that can call them (open source examples for all major tools coming)
     - Implementing an abstract interface is another story...
 

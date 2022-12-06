@@ -1,4 +1,4 @@
-buying-a-lottery-ticket-with-tackle
+Buying a Lottery Ticket with Tackle
 ===================================
 
 When I started writing tackle-box, I never thought it would actually turn into an actual language but that is how it has evolved. Initially I was just trying to learn how to code and didn't know how to properly contribute my changes back to the original project I was modifying (cookiecutter).  The changes grew too great so when I then tried to PR them back to the original code base, maintainers were like "nice work but we can't do anything with that".  Fast forward almost two years and now the project has evolved into a full blown programming language.
